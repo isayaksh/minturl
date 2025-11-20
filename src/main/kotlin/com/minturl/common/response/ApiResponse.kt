@@ -1,4 +1,4 @@
-package com.minturl.common.dto
+package com.minturl.common.response
 
 data class ApiResponse<T>(
     val code: String,
