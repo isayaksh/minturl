@@ -24,4 +24,14 @@ object ResponseBuilder {
             ),
             status
         )
+
+    fun error(status: HttpStatus, code: String, message: String): ResponseEntity<ApiResponse<Nothing?>> =
+        ResponseEntity(
+            ApiResponse(
+                code = code,
+                message = message,
+                data = null
+            ),
+            status
+        )
 }

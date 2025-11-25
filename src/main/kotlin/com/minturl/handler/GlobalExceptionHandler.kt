@@ -34,4 +34,12 @@ class GlobalExceptionHandler {
     fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ApiResponse<Nothing?>> {
         return ResponseBuilder.error(HttpStatus.BAD_REQUEST, ErrorCode.INVALID_REQUEST);
     }
+
+    @ExceptionHandler(MethodArgumentNotValidException::class)
+    fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException): ResponseEntity<ApiResponse<Nothing?>> {
+        val firstError = ex.bindingResult.fieldErrors.firstOrNull()
+        val errorMessage = firstError?.defaultMessage ?: "잘못된 요청 데이터이다."
+        return ResponseBuilder.error(HttpStatus.BAD_REQUEST, ErrorCode.INVALID_REQUEST.code, errorMessage)
+    }
+
 }

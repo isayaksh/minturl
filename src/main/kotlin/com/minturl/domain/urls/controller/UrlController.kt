@@ -2,12 +2,20 @@ package com.minturl.domain.urls.controller
 
 import com.minturl.common.response.ApiResponse
 import com.minturl.common.response.ResponseBuilder
+import com.minturl.domain.urls.dto.RegisterUrlDto
+import com.minturl.domain.urls.service.UrlService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class UrlController: UrlControllerSpec {
-    override fun registerUrl(): ResponseEntity<ApiResponse<String>> {
+class UrlController(
+    val urlService: UrlService
+): UrlControllerSpec {
+    override fun registerUrl(registerUrlDto: RegisterUrlDto): ResponseEntity<ApiResponse<String>> {
+        return ResponseBuilder.ok("")
+    }
+
+    override fun getUrls(userName: String): ResponseEntity<ApiResponse<String>> {
         return ResponseBuilder.ok("")
     }
 
