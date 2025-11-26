@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController
 class UrlController(
     val urlService: UrlService
 ): UrlControllerSpec {
-    override fun registerUrl(registerUrlDto: RegisterUrlDto): ResponseEntity<ApiResponse<String>> {
+    override fun registerUrl(accessToken: String?, registerUrlDto: RegisterUrlDto): ResponseEntity<ApiResponse<String>> {
+
+        urlService.register(accessToken, registerUrlDto);
+
         return ResponseBuilder.ok("")
     }
 

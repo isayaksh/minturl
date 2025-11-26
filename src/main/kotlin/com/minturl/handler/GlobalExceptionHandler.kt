@@ -30,10 +30,7 @@ class GlobalExceptionHandler {
         return ResponseBuilder.error(HttpStatus.BAD_REQUEST, ErrorCode.INVALID_REQUEST);
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException::class)
-    fun handleValidation(ex: MethodArgumentNotValidException): ResponseEntity<ApiResponse<Nothing?>> {
-        return ResponseBuilder.error(HttpStatus.BAD_REQUEST, ErrorCode.INVALID_REQUEST);
-    }
+    
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
     fun handleMethodArgumentNotValid(ex: MethodArgumentNotValidException): ResponseEntity<ApiResponse<Nothing?>> {
