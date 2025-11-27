@@ -34,4 +34,14 @@ class JWTUtil(
             .compact()
     }
 
+    fun extractUsername(token: String): String {
+        val claims = Jwts.parserBuilder()
+            .setSigningKey(key)
+            .build()
+            .parseClaimsJws(token)
+            .body
+
+        return claims.subject   // setSubject로 넣었던 username
+    }
+
 }
