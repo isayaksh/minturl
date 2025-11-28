@@ -9,10 +9,7 @@ import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import jakarta.persistence.UniqueConstraint
-import org.springframework.data.annotation.CreatedDate
-import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
-import java.time.LocalDateTime
 
 @Entity
 @EntityListeners(AuditingEntityListener::class)
@@ -23,11 +20,11 @@ import java.time.LocalDateTime
             columnNames = ["username", "alias"]
         )
     ])
-class Urls(
+class Url(
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    val id: Long,
+    val id: Long? = null,
 
     @Column(name = "username", nullable = false, length = 50)
     val username: String,
@@ -38,4 +35,17 @@ class Urls(
     @Column(name = "originalUrl", nullable = false, length = 2048)
     val originalUrl: String,
 
-): BaseEntity()
+): BaseEntity() {
+
+    companion object {
+        fun create(username: String, alias: String, originalUrl: String): Url {
+            return Url(
+                id = null,
+                username = username,
+                alias = alias,
+                originalUrl = originalUrl
+            )
+        }
+    }
+
+}
