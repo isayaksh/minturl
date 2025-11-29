@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface UrlRepository: JpaRepository<Url, Long> {
+    fun findByUsernameAndAlias(username: String, alias: String): Url?
 }
