@@ -2,6 +2,7 @@ package com.minturl.common.response
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import java.net.URI
 
 object ResponseBuilder {
 
@@ -34,4 +35,11 @@ object ResponseBuilder {
             ),
             status
         )
+
+    fun redirect(originalUrl: String): ResponseEntity<Void> =
+        ResponseEntity
+            .status(HttpStatus.FOUND)
+            .location(URI.create(originalUrl))
+            .build();
+
 }

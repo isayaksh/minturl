@@ -33,9 +33,6 @@ class UrlController(
 
         val originalUrl = urlService.findOriginalUrl(username, alias)
 
-        return ResponseEntity
-            .status(HttpStatus.FOUND)
-            .location(URI.create(originalUrl))
-            .build();
+        return ResponseBuilder.redirect(originalUrl)
     }
 }
