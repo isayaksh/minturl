@@ -1,4 +1,4 @@
-package com.minturl.handler
+package com.minturl.common.handler
 
 import com.minturl.common.response.ApiResponse
 import com.minturl.common.response.ErrorCode
