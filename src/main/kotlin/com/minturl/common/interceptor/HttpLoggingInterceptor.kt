@@ -42,9 +42,6 @@ class HttpLoggingInterceptor: HandlerInterceptor {
         log.info("\n{}", mapper.writeValueAsString(jsonLog))
     }
 
-    private fun bodyToString(bytes: ByteArray): String =
-        try { String(bytes, Charsets.UTF_8) } catch (_: Exception) { "" }
-
     private fun jsonOrRaw(body: String): Any =
         try { mapper.readValue(body, Any::class.java) }
         catch (_: Exception) { body }
